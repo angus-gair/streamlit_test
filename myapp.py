@@ -30,3 +30,9 @@ st.write("Selected Date Range:", start_date, "to", end_date)
 # Display the filtered DataFrame
 st.write("Filtered DataFrame:")
 st.write(filtered_df)
+
+
+min_date = datetime.date(df['Date'].min())
+max_date = datetime.date(df['Date'].max())
+
+st.slider("Select a date range", min_value=min_date, max_value=max_date, value=(start_date, end_date), step=timedelta(days=1),label_visibility="visible")
