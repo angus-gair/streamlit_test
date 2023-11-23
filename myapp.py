@@ -14,8 +14,12 @@ df = pd.DataFrame(data)
 st.title("Date Range Selector App")
 
 # Add a date range selector
-start_date = st.date_input("Select start date", df['Date'].min(), key='start_date')
-end_date = st.date_input("Select end date", df['Date'].max(), key='end_date')
+start_date = pd.to_datetime(st.date_input("Select start date", df['Date'].min(), key='start_date'))
+end_date = pd.to_datetime(st.date_input("Select end date", df['Date'].max(), key='end_date'))
+
+# %%
+#start_date = pd.to_datetime('2023-01-03')
+#end_date = pd.to_datetime('2023-01-05')
 
 # Filter the DataFrame based on the selected date range
 filtered_df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
