@@ -1,33 +1,28 @@
 import streamlit as st
-import pandas as pd
-import seaborn as sns
-import numpy as np
 
-# Sample DataFrame with random data
-np.random.seed(42)
-data = {
-    'Values': np.random.randn(100)
-}
+st.set_page_config(
+    page_title="Hello",
+    page_icon="👋",
+)
 
-df = pd.DataFrame(data)
+st.write("# Welcome to Streamlit! 👋")
 
-# Title for your app
-st.title("Histogram with Line of Best Fit")
+st.sidebar.success("Select a demo above.")
 
-# Sidebar for customization
-st.sidebar.header("Histogram Settings")
-bin_count = st.sidebar.slider("Number of Bins", min_value=1, max_value=100, value=20)
-
-# Create histogram
-st.subheader("Histogram of Values")
-sns.histplot(df['Values'], bins=bin_count, kde=True)
-
-# Calculate and plot the line of best fit
-mean_value = df['Values'].mean()
-std_dev = df['Values'].std()
-x_values = np.linspace(df['Values'].min(), df['Values'].max(), 100)
-y_values = (1 / (std_dev * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x_values - mean_value) / std_dev)**2)
-
-st.line_chart(pd.DataFrame({'X': x_values, 'Y': y_values}), use_container_width=True)
-
-#test
+st.markdown(
+    """
+    Streamlit is an open-source app framework built specifically for
+    Machine Learning and Data Science projects.
+    **👈 Select a demo from the sidebar** to see some examples
+    of what Streamlit can do!
+    ### Want to learn more?
+    - Check out [streamlit.io](https://streamlit.io)
+    - Jump into our [documentation](https://docs.streamlit.io)
+    - Ask a question in our [community
+        forums](https://discuss.streamlit.io)
+    ### See more complex demos
+    - Use a neural net to [analyze the Udacity Self-driving Car Image
+        Dataset](https://github.com/streamlit/demo-self-driving)
+    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+"""
+)
