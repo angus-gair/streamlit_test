@@ -29,3 +29,5 @@ x_values = np.linspace(df['Values'].min(), df['Values'].max(), 100)
 y_values = (1 / (std_dev * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x_values - mean_value) / std_dev)**2)
 
 st.line_chart(pd.DataFrame({'X': x_values, 'Y': y_values}), use_container_width=True)
+
+#test
